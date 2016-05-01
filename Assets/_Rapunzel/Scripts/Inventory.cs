@@ -36,6 +36,8 @@ public class Inventory : MonoBehaviour
             else if (NumberOfItems < 0 && hasNumber(ItemType, -1 * NumberOfItems)) // remove NumberOfItems of ItemType from the players inventory
                 for (int i = 0; i > NumberOfItems; i--)
                     RapunzelManager.PlayerInventory.Remove(ItemType);
+            else if (NumberOfItems == 0) // HACK: allow Inventory to be used for destructable items, such as doors
+                ;
             else
                 yield break;
             Destroy(this.gameObject);

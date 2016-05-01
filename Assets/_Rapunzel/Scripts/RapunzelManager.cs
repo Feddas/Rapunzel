@@ -20,6 +20,9 @@ public enum Speaker
     Rock,
     Door,
     Key,
+    Mom,
+    Coin,
+    CameleonFamily,
 }
 
 public class RapunzelManager : MonoBehaviour

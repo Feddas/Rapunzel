@@ -23,3 +23,5 @@ Thumbs.db.meta
 # exclude 2D standard assets: "Assets" menu => "Import Package..." => "2D"
 /Assets/Standard Assets*
 /Assets/Editor/CrossPlatformInput*
+
+/RawDesign/*
