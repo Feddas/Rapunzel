@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: fc92eac25b012d74ab2996e2964513f9
-timeCreated: 1462090476
+timeCreated: 1462143429
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: CoinSide
-    21300002: CoinTurn
+    21300000: CoinTurn
+    21300002: CoinFlat
     21300004: Key
+    21300006: CoinSide
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,7 +54,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: CoinSide
+    - name: CoinTurn
       rect:
         serializedVersion: 2
         x: 2
@@ -64,11 +65,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: CoinTurn
+    - name: CoinFlat
       rect:
         serializedVersion: 2
         x: 8
-        y: 1
+        y: 7
         width: 7
         height: 8
       alignment: 0
@@ -78,10 +79,21 @@ TextureImporter:
     - name: Key
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
+        x: 1
+        y: 2
         width: 7
-        height: 3
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: CoinSide
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 1
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
