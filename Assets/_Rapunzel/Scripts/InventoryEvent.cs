@@ -31,10 +31,15 @@ public class InventoryEvent : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        var inventoryCollidedInto = collision.gameObject.GetComponent<Inventory>();
+        OnTriggerEnter2D(collision.collider);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        var inventoryCollidedInto = collider.gameObject.GetComponent<Inventory>();
         if (inventoryCollidedInto != null
             //&& collision.gameObject.tag == "Player"
-            && collision.collider.GetType() == typeof(BoxCollider2D))
+            && collider.GetType() == typeof(BoxCollider2D))
         {
             PlayAudioFor(inventoryCollidedInto);
         }

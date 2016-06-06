@@ -50,15 +50,21 @@ public class Inventory : MonoBehaviour
 
     IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == CollectableByTag && collision.collider.GetType() == typeof(BoxCollider2D))
+        OnTriggerEnter2D(collision.collider);
+        yield return null;
+    }
+
+    IEnumerator OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == CollectableByTag && collider.GetType() == typeof(BoxCollider2D))
         {
             yield return null; // wait a frame to let PlaysAudio check current item levels before this modifies RapunzelManager.PlayerInventory
-            var collidedInventory = collision.gameObject.GetComponent<Inventory>();
+            var collidedInventory = collider.gameObject.GetComponent<Inventory>();
 
             // if inventories can be merged, destroy this game object as it has been added to the other inventory
             if (mergeInventory(DictMyInventory, collidedInventory.DictMyInventory))
             {
-                // Debug.Log(this.name + "'s merged with " + collision.gameObject.name);
+                // Debug.Log(this.name + "'s merged with " + collider.gameObject.name);
                 collidedInventory.UpdateInspectorInventory();
                 Destroy(this.gameObject);
             }

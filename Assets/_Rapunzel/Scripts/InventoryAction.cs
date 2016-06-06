@@ -30,4 +30,19 @@ public class InventoryAction : MonoBehaviour
     {
         NoiseMaker.PlayOneShot(audioClip);
     }
+
+    /// <summary> SetActive to false for the given gameobject in 2 frames. These 2 frames gives Inventory.cs a chance on it's schedule of merging inventory lists in 1 frame. </summary>
+    /// <param name="targetGameObject"></param>
+    public void SetActiveFalse(GameObject targetGameObject)
+    {
+        StartCoroutine(SetActiveIn2Frames(targetGameObject, false));
+    }
+
+    public IEnumerator SetActiveIn2Frames(GameObject targetGameObject, bool isActive)
+    {
+        yield return null;
+        yield return null;
+
+        targetGameObject.SetActive(isActive);
+    }
 }
