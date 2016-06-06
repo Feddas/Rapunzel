@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
             // if inventories can be merged, destroy this game object as it has been added to the other inventory
             if (mergeInventory(DictMyInventory, collidedInventory.DictMyInventory))
             {
-                Debug.Log(this.name + "'s merged with " + collision.gameObject.name);
+                // Debug.Log(this.name + "'s merged with " + collision.gameObject.name);
                 collidedInventory.UpdateInspectorInventory();
                 Destroy(this.gameObject);
             }

@@ -16,10 +16,11 @@ Which audio plays depends on.
 - collided with inventory
 NOT A GOOD IDEA: Variable "isOneShot" destroys this object after audio plays
 
-NOT A GOOD IDEA: InventoryEvent (will either replace PlaysAudio, or PlaysAudio will inherit from it)
-Single event occurs depending on the inventory of two collided items.
+IDEA: InventoryEvent (replaces PlaysAudio)
+One UnityEvent occurs depending on the inventory of two collided items.
 Event is the one which has the most matching inventory items.
 InventoryEvent Needs to run before inventory script so unmodified values are used.
 List of Event types:
 - play audio
 - destroy gameobject
+- LoadScene

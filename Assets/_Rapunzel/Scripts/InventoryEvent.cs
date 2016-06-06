@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine.Events;
 
 /// <summary>
 /// Maps sounds to what items are required to make each of sound
@@ -12,12 +13,13 @@ public class StoryAudio
 {
     public AudioClip AudioClip;
     public List<CollectableItems> FlagsRequiredToPlay;
+    public UnityEvent ActionOnMatch;
 }
 
-public class PlaysAudio : MonoBehaviour
+public class InventoryEvent : MonoBehaviour
 {
     public AudioSource noiseMaker;
-    public List<StoryAudio> SpeakingList;
+    public List<StoryAudio> EventByInventoryMatch;
 
     void Start()
     {
@@ -46,7 +48,7 @@ public class PlaysAudio : MonoBehaviour
     public void PlayAudioFor(Inventory listenersInventory)
     {
         // filter down all speakers clips to only those that the player can hear. What they can hear depends on what they have in their StoryInventory
-        var availableClips = SpeakingList
+        var availableClips = EventByInventoryMatch
             .Where(speakerClip => hasInventoryFor(speakerClip, listenersInventory)).ToList();
 
         if (availableClips.Count == 0) // no audio to play
@@ -59,6 +61,7 @@ public class PlaysAudio : MonoBehaviour
 
         //Debug.Log("Playing " + maxInventory.AudioClip.name);
         noiseMaker.PlayOneShot(maxInventory.AudioClip);
+        maxInventory.ActionOnMatch.Invoke();
     }
 
     /// <summary> Determines if a storyClip can be played with the players current StoryInventory </summary>
