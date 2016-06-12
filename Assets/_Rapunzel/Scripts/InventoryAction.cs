@@ -21,6 +21,7 @@ public class InventoryAction : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    #region [ InventoryEvent.cs UnityEvent handlers ]
     public void LoadScene(int sceneIndex)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
@@ -45,4 +46,10 @@ public class InventoryAction : MonoBehaviour
 
         targetGameObject.SetActive(isActive);
     }
+
+    public void CenterOnParent(Transform target)
+    {
+        target.localPosition = Vector3.zero;
+    }
+    #endregion [ InventoryEvent.cs UnityEvent handlers ]
 }

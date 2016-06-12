@@ -11,14 +11,14 @@ using UnityEngine.Events;
 [Serializable]
 public class StoryAudio
 {
-    public AudioClip AudioClip;
     public List<CollectableItems> FlagsRequiredToPlay;
     public UnityEvent ActionOnMatch;
 }
 
 public class InventoryEvent : MonoBehaviour
 {
-    public AudioSource noiseMaker;
+    [Tooltip("Routes PlayAudio. Allows InventoryAction UnityEvent handlers to be stored in a prefab")]
+    public InventoryAction ActionManager;
     public List<StoryAudio> EventByInventoryMatch;
 
     void Start()
@@ -41,7 +41,7 @@ public class InventoryEvent : MonoBehaviour
             //&& collision.gameObject.tag == "Player"
             && collider.GetType() == typeof(BoxCollider2D))
         {
-            PlayAudioFor(inventoryCollidedInto);
+            InvokeEventUsing(inventoryCollidedInto);
         }
         else
         {
@@ -50,7 +50,29 @@ public class InventoryEvent : MonoBehaviour
         // else if (collision.gameObject.tag == "Player") // another option for play audio with 0 FlagsRequiredToPlay that won't play sounds with the ground
     }
 
-    public void PlayAudioFor(Inventory listenersInventory)
+    #region [ Route UnityEvents to ActionManager ]
+    public void PlayAudio(AudioClip clip)
+    {
+        ActionManager.PlayAudio(clip);
+    }
+
+    public void SetActiveFalse(GameObject targetGameObject)
+    {
+        ActionManager.SetActiveFalse(targetGameObject);
+    }
+
+    public void LoadScene(int sceneIndex)
+    {
+        ActionManager.LoadScene(sceneIndex);
+    }
+
+    public void CenterOnParent(Transform target)
+    {
+        ActionManager.CenterOnParent(target);
+    }
+    #endregion [ Route UnityEvents to ActionManager ]
+
+    public void InvokeEventUsing(Inventory listenersInventory)
     {
         // filter down all speakers clips to only those that the player can hear. What they can hear depends on what they have in their StoryInventory
         var availableClips = EventByInventoryMatch
@@ -65,7 +87,6 @@ public class InventoryEvent : MonoBehaviour
             .First();
 
         //Debug.Log("Playing " + maxInventory.AudioClip.name);
-        noiseMaker.PlayOneShot(maxInventory.AudioClip);
         maxInventory.ActionOnMatch.Invoke();
     }
 
