@@ -1,26 +1,57 @@
-# requirements to build
+# What it is
+
+An inventory framework for item collection and triggering audio based on what the character is holding in their inventory.
+
+Developed to help make platformer games with art and audio from children. My children contributed to the art shown in Rapunzel1.unity, Rapunzel2.unity, & Rapunzel3.unity.
+
+# Requirements to build
 
 Include the 2D standard assets: "Assets" menu => "Import Package..." => "2D"
 
+# How to use Inventory.cs
+
+The object that can collect items should have the following:
+1. Rigidbody 2D
+2. Box Collider 2D
+3. Be Tagged, in the example below the white cube is tagged as "Player".
+4. Inventory.cs
+
+All collectable items need:
+1. A Box Collider 2D with Is Trigger checked
+2. Inventory.cs with at least 1 item in MyInventory.
+
+An example of Inventory.cs being used to collect coins is shown in TestInventory.unity. You'll see the white cubes' cache of coins go up as it slides down the ramp.
+![Screenshot of TestInventory.unity](Documentation/TestCoinPickup.png "Screenshot of TestInventory.unity")
+
+# Inventory architecture
+
+Events are fired depending on how inventory matches during a collision.
+
+List of Event types:
+- play audio
+- SetActive of gameobject to false
+- LoadScene
+- Tranlate object to match another objects position
 
 ### How Inventory Works
-Each item has its own inventory, Inventory.cs
+Each item, item holder, or object that can be interacted with an item have their own inventory. A component called Inventory.cs
 Each item in the inventory has a number.
 positive numbers mean collided gets that item.
 negative numbers mean collided requires that item.
 
-### How sounds work
-Each item has it's own AudioSounds list, PlaysAudio.cs
-Which audio plays depends on.
-- self inventory
-- collided with inventory
-NOT A GOOD IDEA: Variable "isOneShot" destroys this object after audio plays
+### How collectables work
+The object that can collect the item needs an Inventory.cs and to be Tagged.
+The collectable uses that tag, in the Inventory.cs component, to determine if the item can be collected.
+The collectables MyInventory determines what will be added to the object that can collect when they collide.
 
-IDEA: InventoryEvent (replaces PlaysAudio)
-One UnityEvent occurs depending on the inventory of two collided items.
-Event is the one which has the most matching inventory items.
-InventoryEvent Needs to run before inventory script so unmodified values are used.
-List of Event types:
-- play audio
-- destroy gameobject
-- LoadScene
+### How Inventory interaction works
+Every object that can be interacted with has both an Inventory.cs and an InventoryEvent.cs
+InventoryEvent.cs's variable EventByInventoryMatch contains a list of events and their associated item requirements.
+If another object with a Inventory.cs colliding with this object matches that requirement, a UnityEvent is fired.
+InventoryEvent.cs routes that event to a manager, referenced by its ActionManager variable, that contains an InventoryAction.cs component.
+If on collision there are matches for multiple events, the one which has the most matching inventory items is fired.
+InventoryEvent is run before inventory script allowing unmodified values to be used.
+
+# Credits
+
+Uses a slightly modifed version of Player Controller 2D https://github.com/cjddmut/Unity-2D-Platformer-Controller

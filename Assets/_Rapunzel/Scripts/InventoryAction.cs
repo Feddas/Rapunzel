@@ -3,6 +3,7 @@ using System.Collections;
 
 public class InventoryAction : MonoBehaviour
 {
+    [Help("Manages InventoryEvents.\n- Plays audio\n- loads scenes\n- toggles active gameobjects\n- re-positions gameobjects.", UnityEditor.MessageType.None)]
     [Tooltip("Only needs to be set if PlayAudio() is used")]
     public AudioSource NoiseMaker;
 
