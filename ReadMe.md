@@ -6,7 +6,8 @@ Developed to help make platformer games with art and audio from children. My chi
 
 # Requirements to build
 
-Include the 2D standard assets: "Assets" menu => "Import Package..." => "2D"
+1. Include the 2D standard assets: "Assets" menu => "Import Package..." => "2D"
+2. (optional) Import RepunzelLfs.unitypackage into the project to get additional scenes to work. This *.unitypackage can be found on the Releases page.
 
 # How to use Inventory.cs
 

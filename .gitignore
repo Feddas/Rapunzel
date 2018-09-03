@@ -15,6 +15,7 @@
 *.userprefs
 *.suo
 *.DotSettings
+.vscode/*
 
 # OS generated files
 Thumbs.db
@@ -25,3 +26,18 @@ Thumbs.db.meta
 /Assets/Editor/CrossPlatformInput*
 
 /RawDesign/*
+
+# files exported with BuildLfsUnityPackage.cs
+RapunzelLfs*.unitypackage
+/Assets/_Rapunzel/Credits/ColiasGladKeyPickup.ogg
+/Assets/_Rapunzel/Credits/ColiasPutKeyDown.ogg
+/Assets/_Rapunzel/Credits/DadDoorNeedsKey.ogg
+/Assets/_Rapunzel/Credits/DadRichInNoTime.ogg
+/Assets/_Rapunzel/Credits/DadWhatKeyFor.ogg
+/Assets/_Rapunzel/Credits/Veronica2Coins2Pass.ogg
+/Assets/_Rapunzel/Credits/VeronicaNothingHurts.ogg
+/Assets/_Rapunzel/Credits/VeronicaThanksForCoins.ogg
+/Assets/_Rapunzel/Credits/FamilyColias.png
+/Assets/_Rapunzel/Credits/FamilyDad.png
+/Assets/_Rapunzel/Credits/FamilyVeronica.png
+            
