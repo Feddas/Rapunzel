@@ -30,6 +30,10 @@ public class Inventory : MonoBehaviour
     [Tooltip("GameObject Tag check of who can consume this inventory item")]
     public string CollectableByTag = "Player";
 
+    [Tooltip("How many seconds after the inventory is merged should the object be destroyed. This should match the timespan of the objects destroy animation.")]
+    [Range(0, 10)]
+    public float DelayToDestroy = 0;
+
     [Tooltip("This should be a dictionary, but don't want to make custom drawers to show it in the Unity3d inspector")]
     public List<ItemStacks> MyInventory;
     public Dictionary<CollectableItems, int> DictMyInventory { get; set; }
@@ -68,7 +72,7 @@ public class Inventory : MonoBehaviour
             {
                 // Debug.Log(this.name + "'s merged with " + collider.gameObject.name);
                 collidedInventory.UpdateInspectorInventory();
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, DelayToDestroy);
             }
         }
     }
