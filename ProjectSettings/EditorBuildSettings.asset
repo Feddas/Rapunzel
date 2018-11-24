@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/_Rapunzel/Rapunzel2.unity
   - enabled: 1
     path: Assets/_Rapunzel/Rapunzel3.unity
+  - enabled: 1
+    path: Assets/_Rapunzel/Rapunzel4.unity
