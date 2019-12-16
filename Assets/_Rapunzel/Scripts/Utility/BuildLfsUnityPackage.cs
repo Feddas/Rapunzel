@@ -24,6 +24,12 @@ public class BuildLfsUnityPackage
             "Assets/_Rapunzel/Credits/FamilyDad.png",
             "Assets/_Rapunzel/Credits/FamilyVeronica.png",
 
+            "/Assets/_ColiasRedKing/RedKing.png",
+            "/Assets/_ColiasRedKing/YellowTruck.png",
+            "/Assets/_ColiasRedKing/Snowman.png",
+            "/Assets/_ColiasRedKing/MonsterPerson.png",
+            "/Assets/_ColiasRedKing/GreyGingerbreadMan.png",
+
         };
         UnityEditor.AssetDatabase.ExportPackage(lfsFiles, "RapunzelLfs" + Application.version + ".unitypackage");
 

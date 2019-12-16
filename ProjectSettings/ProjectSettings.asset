@@ -122,7 +122,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.Company.ProductName
-  bundleVersion: 0.0.1
+  bundleVersion: 0.0.2
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
