@@ -27,10 +27,13 @@ Thumbs.db.meta
 /Assets/Editor/CrossPlatformInput*
 
 /RawDesign/*
+/zipStruct/*
 
-/Assets/_VeronicaRainbow*
+# only include meta files
+/Assets/_VeronicaRainbow/Art/**/*.*
+!/Assets/_VeronicaRainbow/Art/*.meta
 
-# files exported with BuildLfsUnityPackage.cs
+# files exported with BuildLfsUnityPackage.cs or ZipLfsCreate.ps1
 RapunzelLfs*.unitypackage
 /Assets/_Rapunzel/Credits/ColiasGladKeyPickup.ogg
 /Assets/_Rapunzel/Credits/ColiasPutKeyDown.ogg
@@ -44,8 +47,8 @@ RapunzelLfs*.unitypackage
 /Assets/_Rapunzel/Credits/FamilyDad.png
 /Assets/_Rapunzel/Credits/FamilyVeronica.png
 
-/Assets/_ColiasRedKing/RedKing.png
-/Assets/_ColiasRedKing/YellowTruck.png
-/Assets/_ColiasRedKing/Snowman.png
-/Assets/_ColiasRedKing/MonsterPerson.png
-/Assets/_ColiasRedKing/GreyGingerbreadMan.png
+/Assets/_ColiasRedKing/Art/RedKing.png
+/Assets/_ColiasRedKing/Art/YellowTruck.png
+/Assets/_ColiasRedKing/Art/Snowman.png
+/Assets/_ColiasRedKing/Art/MonsterPerson.png
+/Assets/_ColiasRedKing/Art/GreyGingerbreadMan.png
